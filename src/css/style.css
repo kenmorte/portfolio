@@ -1,0 +1,742 @@
+.header-background {
+  background: url(../img/San-Jose.jpg) no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  overflow:auto; 
+}
+
+.header-area {
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.header-content-area {
+	height: 100vh;
+    color: white;
+    z-index: 3;
+    text-align: center;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.header-main-title {
+	position: relative;
+	top: 25vh;
+    font-size: 72px;
+    font-weight: 300;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.74902);
+    display: inline-block;
+    margin: 10px 0px;
+    overflow: hidden;
+}
+
+.header-subtitle {
+	position: relative;
+	top: 25vh;
+    display: block;
+    font-size: 36px;
+	font-family: monospace;
+}
+
+.fullpage .container{display:table; height:inherit;}
+.fullpage .absolute-center{display:table-cell;vertical-align: middle;}
+
+
+/* -------------------- General Section Styles -------------------- */
+.section-header {
+    text-align: center;
+}
+
+.section-header-title {
+    font-size: 48px;
+    margin: 20px;
+    padding-top: 20px;
+}
+
+.section-header-subtitle {
+    margin: 20px;
+    font-size: 22px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #727878;
+    color: #727878;
+}
+
+/* -------------------- About Me Section Styles -------------------- */
+.profile-pic {
+    height: 18em;
+    width: 25em;
+    display: block;
+    margin: 0 auto;
+    -moz-border-radius: 50%;
+    /* -webkit-border-radius: 50%; */
+    border-radius: 50%;
+    border: 10px solid #F5F1DE;
+    background: url(../img/me.jpg) 0px -25px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.about-me-section {
+    margin: 2em 7em;
+    text-align: center;
+    line-height: 35px;
+    font-size: 18px;
+}
+
+@media only screen and (max-device-width: 480px) {
+.about-me-section {
+    margin: 2em 5em;
+    text-align: center;
+    line-height: 35px;
+    font-size: 18px;
+}
+}
+
+.engineer .web, .mobile {
+    text-align: center;
+}
+
+.icon {
+    font-size: 8em;
+}
+
+/* Begin Skill Section */
+
+.skill-container {
+	background: white;
+	color: black;
+	text-align: center;
+	font-size: 20px;
+	font-family: "ruda", 'Open Sans', 'Nunito', sans-serif, serif;
+	width: 100%;
+	height: auto;
+}
+
+.bars {
+	width: 95%;
+	float: left;
+	padding: 0;
+	text-align: left;
+}
+
+.bars li {
+	position: relative;
+	margin-bottom: 20px;
+	background: #bdc3c7;
+	height: 38px;
+	border-radius: 3px;
+	overflow: hidden;
+}
+.fonts {
+	color: #fff;
+	font-size: 18px;
+	font-weight: bolder;
+	font-family: "ruda", 'Open Sans', sans-serif;
+	padding-left: 20px;
+	position: relative;
+}
+.bar-expand {
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin: 0;
+	padding-right: 24px;
+	background: #34495e;
+	display: inline-block;
+	height: 42px;
+	line-height: 42px;
+	border-radius: 3px 0 0 3px;
+	background: #222;
+}
+
+.html5 {
+	width: 95%;
+    animation: html 2s ease;
+	-moz-animation: html 2s ease;
+	-webkit-animation: html 2s ease;
+}
+
+@keyframes html5 {
+	0%   { width: 0px;  }
+	100% { width: 95%;  }
+}
+@-moz-keyframes html5 {
+	0%   { width: 0px;  }
+	100% { width: 95%;  }
+}
+@-webkit-keyframes html5 {
+	0%   { width: 0px;  }
+	100% { width: 95%;  }
+}
+
+.css {
+	width: 85%;
+    animation: css 2s ease;
+	-moz-animation: css 2s ease;
+	-webkit-animation: css 2s ease;
+}
+
+@keyframes css {
+	0%   { width: 0px;  }
+	100% { width: 85%;  }
+}
+@-moz-keyframes css {
+	0%   { width: 0px;  }
+	100% { width: 85%;  }
+}
+@-webkit-keyframes css {
+	0%   { width: 0px;  }
+	100% { width: 85%;  }
+}
+
+.java {
+	width: 70%;
+    animation: java 2s ease;
+	-moz-animation: java 2s ease;
+	-webkit-animation: java 2s ease;
+}
+
+@keyframes java {
+	0%   { width: 0px;  }
+	100% { width: 70%;  }
+}
+@-moz-keyframes java {
+	0%   { width: 0px;  }
+	100% { width: 70%;  }
+}
+@-webkit-keyframes java {
+	0%   { width: 0px;  }
+	100% { width: 70%;  }
+}
+
+.javascript {
+	width: 50%;
+    animation: javascript 2s ease;
+	-moz-animation: javascript 2s ease;
+	-webkit-animation: javascript 2s ease;
+}
+
+@keyframes javascript {
+	0%   { width: 0px;  }
+	100% { width: 50%;  }
+}
+@-moz-keyframes javascript {
+	0%   { width: 0px;  }
+	100% { width: 50%;  }
+}
+@-webkit-keyframes javascript {
+	0%   { width: 0px;  }
+	100% { width: 50%;  }
+}
+
+.python {
+	width: 35%;
+    animation: python 2s ease;
+	-moz-animation: python 2s ease;
+	-webkit-animation: python 2s ease;
+}
+
+@keyframes python {
+	0%   { width: 0px;  }
+	100% { width: 35%;  }
+}
+@-moz-keyframes python {
+	0%   { width: 0px;  }
+	100% { width: 35%;  }
+}
+@-webkit-keyframes python {
+	0%   { width: 0px;  }
+	100% { width: 35%;  }
+}
+
+.cplusplus {
+	width: 60%;
+    animation: python 2s ease;
+	-moz-animation: python 2s ease;
+	-webkit-animation: python 2s ease;
+}
+
+@keyframes python {
+	0%   { width: 0px;  }
+	100% { width: 60%;  }
+}
+@-moz-keyframes python {
+	0%   { width: 0px;  }
+	100% { width: 60%;  }
+}
+@-webkit-keyframes python {
+	0%   { width: 0px;  }
+	100% { width: 60%;  }
+}
+
+.autodesk {
+	width: 90%;
+    animation: autodesk 2s ease;
+	-moz-animation: autodesk 2s ease;
+	-webkit-animation: autodesk 2s ease;
+}
+
+@keyframes autodesk {
+	0%   { width: 0px;  }
+	100% { width: 90%;  }
+}
+@-moz-keyframes autodesk {
+	0%   { width: 0px;  }
+	100% { width: 90%;  }
+}
+@-webkit-keyframes autodesk {
+	0%   { width: 0px;  }
+	100% { width: 90%;  }
+}
+
+.soldering {
+	width: 90%;
+    animation: soldering 2s ease;
+	-moz-animation: soldering 2s ease;
+	-webkit-animation: soldering 2s ease;
+}
+
+@keyframes soldering {
+	0%   { width: 0px;  }
+	100% { width: 90%;  }
+}
+@-moz-keyframes soldering {
+	0%   { width: 0px;  }
+	100% { width: 90%;  }
+}
+@-webkit-keyframes soldering {
+	0%   { width: 0px;  }
+	100% { width: 90%;  }
+}
+
+.cnc-machine {
+	width: 85%;
+    animation: cnc-machine 2s ease;
+	-moz-animation: cnc-machine 2s ease;
+	-webkit-animation: cnc-machine 2s ease;
+}
+
+@keyframes cnc-machine {
+	0%   { width: 0px;  }
+	100% { width: 85%;  }
+}
+@-moz-keyframes cnc-machine {
+	0%   { width: 0px;  }
+	100% { width: 85%;  }
+}
+@-webkit-keyframes cnc-machine {
+	0%   { width: 0px;  }
+	100% { width: 85%;  }
+}
+
+.autocad {
+	width: 75%;
+    animation: autocad 2s ease;
+	-moz-animation: autocad 2s ease;
+	-webkit-animation: autocad 2s ease;
+}
+
+@keyframes autocad {
+	0%   { width: 0px;  }
+	100% { width: 75%;  }
+}
+@-moz-keyframes autocad {
+	0%   { width: 0px;  }
+	100% { width: 75%;  }
+}
+@-webkit-keyframes autocad {
+	0%   { width: 0px;  }
+	100% { width: 75%;  }
+}
+
+.printing {
+	width: 70%;
+    animation: printing 2s ease;
+	-moz-animation: printing 2s ease;
+	-webkit-animation: printing 2s ease;
+}
+
+@keyframes printing {
+	0%   { width: 0px;  }
+	100% { width: 70%;  }
+}
+@-moz-keyframes printing {
+	0%   { width: 0px;  }
+	100% { width: 70%;  }
+}
+@-webkit-keyframes printing {
+	0%   { width: 0px;  }
+	100% { width: 70%;  }
+}
+
+.cnc {
+	width: 65%;
+    animation: cnc 2s ease;
+	-moz-animation: cnc 2s ease;
+	-webkit-animation: cnc 2s ease;
+}
+
+@keyframes cnc {
+	0%   { width: 0px;  }
+	100% { width: 80%;  }
+}
+@-moz-keyframes cnc {
+	0%   { width: 0px;  }
+	100% { width: 65%;  }
+}
+@-webkit-keyframes cnc {
+	0%   { width: 0px;  }
+	100% { width: 65%;  }
+}
+
+.solidworks {
+	width: 45%;
+    animation: solidworks 2s ease;
+	-moz-animation: solidworks 2s ease;
+	-webkit-animation: solidworks 2s ease;
+}
+
+@keyframes solidworks {
+	0%   { width: 0px;  }
+	100% { width: 80%;  }
+}
+@-moz-keyframes solidworks {
+	0%   { width: 0px;  }
+	100% { width: 45%;  }
+}
+@-webkit-keyframes solidworks {
+	0%   { width: 0px;  }
+	100% { width: 45%;  }
+}
+
+.arduino {
+	width: 80%;
+    animation: arduino 2s ease;
+	-moz-animation: arduino 2s ease;
+	-webkit-animation: arduino 2s ease;
+}
+
+@keyframes arduino {
+	0%   { width: 0px;  }
+	100% { width: 80%;  }
+}
+@-moz-keyframes arduino {
+	0%   { width: 0px;  }
+	100% { width: 80%;  }
+}
+@-webkit-keyframes arduino {
+	0%   { width: 0px;  }
+	100% { width: 80%;  }
+}
+
+
+.bootstrap {
+	width: 70%;
+    animation: bootstrap 2s ease;
+	-moz-animation: bootstrap 2s ease;
+	-webkit-animation: bootstrap 2s ease;
+}
+
+@keyframes bootstrap {
+	0%   { width: 0px;  }
+	100% { width: 70%;  }
+}
+@-moz-keyframes bootstrap {
+	0%   { width: 0px;  }
+	100% { width: 70%;  }
+}
+@-webkit-keyframes bootstrap {
+	0%   { width: 0px;  }
+	100% { width: 70%;  }
+}
+
+
+.android {
+	width: 65%;
+    animation: android 2s ease;
+	-moz-animation: android 2s ease;
+	-webkit-animation: android 2s ease;
+}
+
+@keyframes android {
+	0%   { width: 0px;  }
+	100% { width: 65%;  }
+}
+@-moz-keyframes android {
+	0%   { width: 0px;  }
+	100% { width: 65%;  }
+}
+@-webkit-keyframes android {
+	0%   { width: 0px;  }
+	100% { width: 65%;  }
+}
+
+
+.chrome {
+	width: 50%;
+    animation: chrome 2s ease;
+	-moz-animation: chrome 2s ease;
+	-webkit-animation: chrome 2s ease;
+}
+
+@keyframes chrome {
+	0%   { width: 0px;  }
+	100% { width: 50%;  }
+}
+
+@-moz-keyframes chrome {
+	0%   { width: 0px;  }
+	100% { width: 50%;  }
+}
+@-webkit-keyframes chrome {
+	0%   { width: 0px;  }
+	100% { width: 50%;  }
+}
+
+/* End Skill Section */
+
+.interest {
+    display: inline-block;
+    margin: 10px;
+    position: relative;
+    overflow: hidden;
+    background: white;
+}
+
+.interest img {
+    width: 450px;
+    position: relative;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.interest-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 30px;
+    background: rgba(34, 34, 34, 0.75);
+    height: 100%;
+    padding: 30px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: white;
+    opacity: 0;
+    -moz-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    transition: all 0.25s;
+}
+
+.interest-info:hover {
+    opacity: 1;
+}
+
+.interest-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid white;
+    text-align: center;
+    margin-top: -30px;
+    opacity: 1;
+}
+
+.interest-text {
+    position: relative;
+}
+
+.interest-info a {
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@media only screen and (max-device-width: 480px) {
+	.interest {
+		height: 20em;
+	}
+    .interest img {
+		width: 100%;
+		height: 100%;
+	}
+	.interest-info:active {
+    	opacity: 1;
+	}
+	.interest-info:focus {
+    	opacity: 1;
+	}
+}
+
+/* Begin Contact Section */
+
+.contact-container {
+	background: #D3D3D3;
+	color: black;
+	text-align: center;
+	font-size: 20px;
+	font-family: 'Open Sans', 'Nunito', sans-serif, serif;
+}
+
+.email1 {
+	background-color: rgb(39, 174, 96);
+}
+.email2 {
+	color: rgb(39, 174, 96);
+	background-color: #D3D3D3;
+}
+.linkedin1 {
+	background-color: #0E76A8;
+}
+.linkedin2 {
+	color: #0E76A8;
+	background-color: #D3D3D3;
+}
+.github1 {
+	background-color: #000;
+}
+.github2 {
+	color: #000;
+	background-color: #D3D3D3;
+}
+.youtube1 {
+	background-color: #cc181e;
+}
+.youtube2 {
+	color: #cc181e;
+	background-color: #D3D3D3;
+}
+.resume1 {
+	background-color: #8e44ad;
+}
+.resume2 {
+	color: #8e44ad;
+	background-color: #D3D3D3;
+}
+
+.trigger {
+	position: relative;
+	margin-top: 50px;
+	height: 100px;
+	width: 100px;
+	display: inline-block;
+	-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+	-moz-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+	box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	z-index: 5;
+	font-size: 20em;
+}
+
+.trigger_span {
+	overflow: hidden;
+	position: absolute;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+.trigger_span, .trigger_span i  {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	z-index: -5;
+	font-size: 30px;
+	transition: all 0.4s;
+}
+
+.trigger .trigger_span i:before {
+	position: relative;
+	top: 25%;
+}
+
+.trigger .trigger_span i:nth-child(1) {
+	font-size: 2em;
+	top: 0;
+	line-height: 50px;
+	color: #fff;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+.trigger .trigger_span i:nth-child(2) {
+	font-size: 2em;
+	top: 100%;
+	line-height: 50px;
+	background-color: #d9d9d9;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+.trigger:hover .trigger_span i:nth-child(1) {
+	top: -100%;
+	
+}
+.trigger:hover .trigger_span i:nth-child(2) {
+	top: 0;
+}
+.ch-info {
+	-webkit-transition: all 0.35s ease-in-out;
+	-moz-transition: all 0.35s ease-in-out;
+	-o-transition: all 0.35s ease-in-out;
+	-ms-transition: all 0.35s ease-in-out;
+	transition: all 0.35s ease-in-out;
+	-webkit-transform: scale(0);
+	-moz-transform: scale(0);
+	-o-transform: scale(0);
+	-ms-transform: scale(0);
+	transform: scale(0);
+	backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+.ch-info h3 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+a.icon:hover + .ch-info {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-o-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);	
+}
+
+/* End Contact Section */
+
+.btn-resume {
+    background: rgba(51, 122, 183, 0);
+    border: 1px solid rgba(51, 122, 183, 0.9);
+    color: rgba(51, 122, 183, 0.9);
+	transition: all 0.4s;
+	font-size: 1em;
+	width: 100%;
+	border-radius: 5em;
+}
+.btn-resume:hover {
+	background: rgba(51, 122, 183, 0.9);
+	border: 1px solid white;
+	color: white;
+}
+.btn{
+    white-space:normal !important;
+    word-wrap: break-word; 
+	word-break: normal
+}

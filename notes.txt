@@ -1,0 +1,17 @@
+Inspiration Websites w/notes:
+
+----------------- Swati Garg -----------------
+URL: http://swatigarg.me/
+- Use her header tab index + ease scrolling into different sections of the portfolio when clicking on each tab
+- Use her headers for each different section (font + two separator lines)
+- Use her timeline-like structure for work experience + education
+
+----------------- Shafqat Dulal -----------------
+URL: http://sdulal.github.io/
+- Definitely use his skill section implementation, it looks gorgeous!
+- Use his "On Technology" section for my project section
+	- Mainly the animation for hovering over an item and displaying text
+	- Add circular image links to this such as a GitHub, Video link
+- Use his header tab functionality where it follows along the top when scrolling past it in the initial state!
+
+http:// isaacaddis.github.io ---> use the header here!!!
