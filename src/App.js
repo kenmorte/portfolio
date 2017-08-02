@@ -11,9 +11,7 @@ import ContactSection from './components/ContactSection.js';
 import Section from './components/Section.js';
 import profilePic from './img/me.jpg';
 import 'babel-polyfill';
-import './App.css';
 import './css/Typist.css';
-import './css/style.css';
 import './css/timelinestyle.css';
 
 const NORMAL_PROJECT_IMG_STYLE = {

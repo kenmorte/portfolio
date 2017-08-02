@@ -11,8 +11,6 @@ import Courtfinder from '../img/courtfinder.jpeg';
 import Emma from '../img/emma.png';
 import MultiplicationFlashCards from '../img/mult.png';
 import 'babel-polyfill';
-import '../App.css';
-import '../css/style.css';
 
 const NORMAL_PROJECT_IMG_STYLE = {
   transform: 'scale(1)',
@@ -292,13 +290,13 @@ class ProjectsSection extends Component {
                     onTouchStart={this.onMouseOverProject.bind(this, projectIndex)}
                     onMouseOver={this.onMouseOverProject.bind(this, projectIndex)}
                     onMouseOut={this.onMouseOutProject.bind(this, projectIndex)}
-                    key={"interest#" + projectIndex}
+                    key={"project#" + projectIndex}
                     style={{borderRadius: 10}}
                 >
                     <img
                         src={project.img}
                         className={css(styles.projectImg, isHighlighted ? styles.highlightedProjectImgStyle : styles.normalProjectImgStyle)}
-                        key={"interestimg#" + projectIndex}
+                        key={"projectimg#" + projectIndex}
                         style={Object.assign({}, {borderRadius: 10}, project.style ? project.style : {})}
                     />
                     <div 
@@ -306,7 +304,7 @@ class ProjectsSection extends Component {
                     >
                         <div
                             className={isHighlighted ? css(styles.fadeInDown, styles.projectName) : css(styles.fadeOutUp, styles.projectName)}
-                            key={"interestname#" + projectIndex}
+                            key={"projectname#" + projectIndex}
                         >
                         {project.name}
                         </div>
@@ -356,7 +354,7 @@ class ProjectsSection extends Component {
         });
 
         return (
-        <div id="interests-pictures" style={{ opacity: 1, top: 0 }}>
+        <div style={{ opacity: 1, top: 0 }}>
             {sectionBody}
         </div>
         );

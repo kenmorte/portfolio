@@ -129,6 +129,11 @@ a.icon:hover + .ch-info {
 	font-size: 1em;
 	width: 100%;
 }
+.btn-resume:focus {
+	color: white;
+	background: rgba(0,0,0,0);
+	border: 1px solid white;
+}
 .btn-resume:hover {
 	background: white;
 	border: 1px solid white;

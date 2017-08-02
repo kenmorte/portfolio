@@ -3,9 +3,7 @@ import Scroll from 'react-scroll';
 import VisibilitySensor from 'react-visibility-sensor';
 import { StyleSheet, css } from 'aphrodite';
 import 'babel-polyfill';
-import '../App.css';
 import '../css/contact.css';
-import '../css/style.css';
 
 class ContactSection extends Component {
     constructor(props) {

@@ -1,27 +1,14 @@
 import React, { Component } from 'react';
 import { fadeInUp, fadeInDown, fadeOutUp, fadeOutDown } from 'react-animations';
-import Scroll from 'react-scroll';
 import VisibilitySensor from 'react-visibility-sensor';
 import { StyleSheet, css } from 'aphrodite';
 import { isMobile } from '../helpers/helpers.js';
 import profilePic from '../img/me.jpg';
-import '../App.css';
-import '../css/style.css';
-
-/**************************************************************/
-/* ------------------- React Scroll Members ----------------- */
-/**************************************************************/
-var Link       = Scroll.Link;
-var Element    = Scroll.Element;
-var Events     = Scroll.Events;
-var scroll     = Scroll.animateScroll;
-var scrollSpy  = Scroll.scrollSpy;
-
 
 /**************************************************************/
 /* ------------------ About Me Inline-Styles ---------------- */
 /**************************************************************/
-const aboutMeStyles = StyleSheet.create({
+const styles = StyleSheet.create({
     hidden: {
         visibility: 'hidden'
     },
@@ -33,7 +20,26 @@ const aboutMeStyles = StyleSheet.create({
 
     widget: {
         textAlign: 'center',
-    }
+    },
+
+    section: {
+        margin: isMobile() ? '2em 5em' : '2em 7em',
+        textAlign: 'center',
+        lineHeight: '35px',
+        fontSize: '18px',
+    },  
+
+    profilePic: {
+        height: '18em',
+        width: '25em',
+        display: 'block',
+        margin: '0 auto',
+        borderRadius: '50%',
+        border: '10px solid #DDDDDD',
+        background: 'url(../img/me.jpg) 0px -25px',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+    },
 });
 
 
@@ -92,23 +98,6 @@ class AboutMeSection extends Component {
         };
     }
 
-    componentDidMount() {
-        Events.scrollEvent.register('begin', function(to, element) {
-        console.log("begin", arguments);
-        });
-    
-        Events.scrollEvent.register('end', function(to, element) {
-        console.log("end", arguments);
-        });
-    
-        scrollSpy.update();
-    }
-
-    componentWillUnmount() {
-        Events.scrollEvent.remove('begin');
-        Events.scrollEvent.remove('end');
-    }
-
     handleScrollActive = (toElement) => {
 
         // We are using a different way of animating for mobile devices
@@ -155,14 +144,14 @@ class AboutMeSection extends Component {
                 <img
                     src={profilePic}
                     alt="profilePic"
-                    className="profile-pic" 
+                    className={css(styles.profilePic)}
                 />
-                <div className="about-me-section">
+                <div className={css(styles.section)}>
                     {this.description}
                 </div>
                 <div className="container">
-                    <VisibilitySensor onChange={(isVisible) => {if (isVisible && !isMobile()) this.animateWidgets(this.animationDelay)}} />
                     <div className="row">
+                    <VisibilitySensor minTopValue={1000} onChange={(isVisible) => {if (isVisible && !isMobile()) this.animateWidgets(this.animationDelay)}} />
                         <div 
                             className="col-sm-4" 
                             onMouseOver={() => this.setState({isMouseoverLeftWidget: true})}
@@ -170,9 +159,9 @@ class AboutMeSection extends Component {
                             onTouchStart={() => this.setState({isMouseoverLeftWidget: true, isMouseoverMidWidget: false, isMouseoverRightWidget: false})}
                         >
                             <VisibilitySensor onChange={(isVisible) => {if (isVisible && isMobile()) this.setState({isLeftWidgetAnimated: true})}} />
-                            <div className={css(this.state.isLeftWidgetAnimated ? aboutMeStyles.fadeInUp : aboutMeStyles.hidden)}>
+                            <div className={css(this.state.isLeftWidgetAnimated ? styles.fadeInUp : styles.hidden)}>
                                 <div 
-                                    className={css(aboutMeStyles.widget)}
+                                    className={css(styles.widget)}
                                     style={{transform: this.state.isMouseoverLeftWidget ? 'scale(1.05)' : 'scale(1)', transitionDuration: '0.2s'}}
                                 >
                                     <i className={"fa " + this.widgets.left.icon + " fa-5x icon"}></i>
@@ -190,9 +179,9 @@ class AboutMeSection extends Component {
                             onTouchStart={() => this.setState({isMouseoverLeftWidget: false, isMouseoverMidWidget: true, isMouseoverRightWidget: false})}
                         >
                             <VisibilitySensor onChange={(isVisible) => {if (isVisible && isMobile()) this.setState({isMidWidgetAnimated: true})}} />
-                            <div className={css(this.state.isMidWidgetAnimated ? aboutMeStyles.fadeInUp : aboutMeStyles.hidden)}>
+                            <div className={css(this.state.isMidWidgetAnimated ? styles.fadeInUp : styles.hidden)}>
                                 <div 
-                                    className={css(aboutMeStyles.widget)}
+                                    className={css(styles.widget)}
                                     style={{transform: this.state.isMouseoverMidWidget ? 'scale(1.05)' : 'scale(1)', transitionDuration: '0.2s'}}
                                 >
                                     <i className={"fa " + this.widgets.mid.icon + " fa-5x icon"}></i>
@@ -210,9 +199,9 @@ class AboutMeSection extends Component {
                             onTouchStart={() => this.setState({isMouseoverLeftWidget: false, isMouseoverMidWidget: false, isMouseoverRightWidget: true})}
                         >
                             <VisibilitySensor onChange={(isVisible) => {if (isVisible && isMobile()) this.setState({isRightWidgetAnimated: true})}} />
-                            <div className={css(this.state.isRightWidgetAnimated ? aboutMeStyles.fadeInUp : aboutMeStyles.hidden)}>
+                            <div className={css(this.state.isRightWidgetAnimated ? styles.fadeInUp : styles.hidden)}>
                                 <div 
-                                    className={css(aboutMeStyles.widget)}
+                                    className={css(styles.widget)}
                                     style={{transform: this.state.isMouseoverRightWidget ? 'scale(1.05)' : 'scale(1)', transitionDuration: '0.2s'}}
                                 >
                                     <i className={"fa " + this.widgets.right.icon + " fa-5x icon"}></i>

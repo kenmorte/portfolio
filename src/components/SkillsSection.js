@@ -20,11 +20,21 @@ import HtmlCss from '../img/html-css.png';
 import MySql from '../img/mysql.png';
 import Ide from '../img/ide.png';
 import 'babel-polyfill';
-import '../App.css';
-import '../css/style.css';
 
-
+/**************************************************************/
+/* ------------------ Skills Section Styles ----------------- */
+/**************************************************************/
 const styles = StyleSheet.create({
+
+    skillContainer: {
+        background: '#4C5364',
+        color: 'white',
+        textAlign: 'center',
+        fontSize: '20px',
+        fontFamily: "\"ruda\", 'Open Sans', 'Nunito', sans-serif, serif",
+        width: '100%',
+        height: 'auto',
+    },
 
     hidden: {
         visibility: 'hidden'
@@ -33,6 +43,22 @@ const styles = StyleSheet.create({
   /**************************************************************/
   /* ------------------------ Bar Styles ---------------------- */
   /**************************************************************/
+    bars: {
+        width: '95%',
+        float: 'left',
+        padding: '0',
+        textAlign: 'left',
+    },
+
+    barsLi: {
+        position: 'relative',
+        marginBottom: '20px',
+        background: '#bdc3c7',
+        height: '38px',
+        borderRadius: '3px',
+        overflow: 'hidden',
+    },
+
     barEl: {
         position: 'relative',
         marginBottom: '20px',
@@ -197,7 +223,7 @@ class SkillsSection extends Component {
         return this.skills.programmingLanguages.sort((a, b) => b.percent - a.percent)
             .map((programmingLanguage, index) => {
                 return (
-                    <li className={css(styles.barEl)} key={"programmingLanguage" + index}>
+                    <li className={css(styles.barEl, styles.barsLi)} key={"programmingLanguage" + index}>
                             <VisibilitySensor onChange={
                                 (isVisible) => {
                                     if (isVisible)
@@ -236,7 +262,7 @@ class SkillsSection extends Component {
         return this.skills.frameworksLibraries.sort((a, b) => b.percent - a.percent)
             .map((frameworkLibrary, index) => {
                 return (
-                    <li className={css(styles.barEl)} key={"frameworkLibrary" + index}>
+                    <li className={css(styles.barEl, styles.barsLi)} key={"frameworkLibrary" + index}>
                             <VisibilitySensor onChange={
                                 (isVisible) => {
                                     if (isVisible)
@@ -277,7 +303,7 @@ class SkillsSection extends Component {
 
         return techList.sort((a, b) => b.percent - a.percent)
             .map((otherTechnology, index) => {
-                    return <li className={css(styles.barEl)} key={"othertech" + index}>
+                    return <li className={css(styles.barEl, styles.barsLi)} key={"othertech" + index}>
                             <VisibilitySensor onChange={
                                 (isVisible) => {
                                     if (isVisible)
@@ -311,51 +337,46 @@ class SkillsSection extends Component {
 
     render() {
         return (
-      <div className="skill-container">
+      <div className={css(styles.skillContainer)}>
         <div className="container">
           <div className="row">
             <div className="col-md-6">
-              <div className=" flipInY">
                 <h2>Programming Languages</h2>
-              </div>
-              <div className="bars">
-                <ul className="skills" style={{ background: this.props.mainColor, color: this.props.subColor }}>
-                  {this.getProgrammingLanguages()}
-                </ul>
-              </div>
-              <br />
+                <div className={css(styles.bars)}>
+                    <ul className="skills" style={{ background: this.props.mainColor, color: this.props.subColor }}>
+                        {this.getProgrammingLanguages()}
+                    </ul>
+                </div>
+                <br />
             </div>
 
             <div className="col-md-6">
-              <div className=" flipInY">
                 <h2>Frameworks and Libraries</h2>
-              </div>
-              <div className="bars">
-                <ul className="skills" style={{ background: this.props.mainColor }}>
-                  {this.getFrameworksLibraries()}
-                </ul>
-              </div>
-              <br />
+                <div className={css(styles.bars)}>
+                    <ul className="skills" style={{ background: this.props.mainColor }}>
+                        {this.getFrameworksLibraries()}
+                    </ul>
+                </div>
+                <br />
             </div>
-            <div className=" flipInY">
-              <h2>Other Technologies</h2>
-            </div>
+            
+            <h2>Other Technologies</h2>
             <div className="col-md-6">
-              <div className="bars">
-                <ul className="skills" style={{ background: this.props.mainColor }}>
-                  {this.getOtherTechnologies(true)}
-                  {isMobile() ? this.getOtherTechnologies(false) : null}
-                </ul>
-              </div>
+                <div className={css(styles.bars)}>
+                    <ul className="skills" style={{ background: this.props.mainColor }}>
+                        {this.getOtherTechnologies(true)}
+                        {isMobile() ? this.getOtherTechnologies(false) : null}
+                    </ul>
+                </div>
             </div>
             {
                 !isMobile() ? 
                     <div className="col-md-6">
-                    <div className="bars">
-                        <ul className="skills" style={{ background: this.props.mainColor }}>
-                        {this.getOtherTechnologies(false)}
-                        </ul>
-                    </div>
+                        <div className={css(styles.bars)}>
+                            <ul className="skills" style={{ background: this.props.mainColor }}>
+                                {this.getOtherTechnologies(false)}
+                            </ul>
+                        </div>
                     </div>
                 : null
             }
