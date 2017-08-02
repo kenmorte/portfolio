@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { fadeInUp, fadeInDown, fadeOutUp, fadeOutDown } from 'react-animations';
 import Scroll from 'react-scroll';
+import VisibilitySensor from 'react-visibility-sensor';
 import { StyleSheet, css } from 'aphrodite';
+import { isMobile } from '../helpers/helpers.js';
 import profilePic from '../img/me.jpg';
 import '../App.css';
 import '../css/style.css';
@@ -50,7 +52,7 @@ class AboutMeSection extends Component {
             left: {
                 title: "Mobile",
                 icon: "fa-mobile",
-                description: "I develop apps in both Android and iOS. This summer, I hope to release my first app on the App Store."
+                description: "I develop apps for both Android and iOS. This summer, I hope to release my first app on the App Store."
             },
 
             mid: {
@@ -66,10 +68,17 @@ class AboutMeSection extends Component {
             },
         };
 
+        // Animation delay for widgets
+        this.animationDelay = 250; // ms
+
         this.state = {
 
             // To keep track of scroll position in section
             scrolledOnAboutMeWidgets: false,
+
+            isLeftWidgetVisible: false,
+            isMidWidgetVisible: false,
+            isRightWidgetVisible: false,
 
             // To keep track of the animated widgets in this section
             isLeftWidgetAnimated: false,
@@ -101,12 +110,17 @@ class AboutMeSection extends Component {
     }
 
     handleScrollActive = (toElement) => {
+
+        // We are using a different way of animating for mobile devices
+        //  Cancel the scroll events if user is using mobile device
+        if (isMobile()) {
+            return;
+        }
+
         switch (toElement) {
             case 'AboutMeWidgets':
-                const animationDelay = 250;    // ms
-
                 if (!this.state.scrolledOnAboutMeWidgets) {
-                    this.animateWidgets(animationDelay);
+                    this.animateWidgets(this.animationDelay);
                 }
 
                 break;
@@ -138,16 +152,6 @@ class AboutMeSection extends Component {
     render() {
         return (
             <div>
-                <Link 
-                    activeClass="active" 
-                    to="AboutMeWidgets" 
-                    spy={true} 
-                    smooth={true} 
-                    offset={-450}
-                    onSetActive={this.handleScrollActive}
-                    style={{display: 'none'}}
-                />
-
                 <img
                     src={profilePic}
                     alt="profilePic"
@@ -157,64 +161,69 @@ class AboutMeSection extends Component {
                     {this.description}
                 </div>
                 <div className="container">
-                    <Element name="AboutMeWidgets" className="element">
-                        <div className="row">
-                            <div 
-                                className="col-sm-4" 
-                                onMouseOver={() => this.setState({isMouseoverLeftWidget: true})}
-                                onMouseOut={() => this.setState({isMouseoverLeftWidget: false})}
-                                onTouchStart={() => this.setState({isMouseoverLeftWidget: true, isMouseoverMidWidget: false, isMouseoverRightWidget: false})}
-                            >
-                                <div className={css(this.state.isLeftWidgetAnimated ? aboutMeStyles.fadeInUp : aboutMeStyles.hidden)}>
-                                    <div 
-                                        className={css(aboutMeStyles.widget)}
-                                        style={{transform: this.state.isMouseoverLeftWidget ? 'scale(1.05)' : 'scale(1)', transitionDuration: '0.2s'}}
-                                    >
-                                        <i className={"fa " + this.widgets.left.icon + " fa-5x icon"}></i>
-                                        <p>{this.widgets.left.title}</p>
-                                        <i className="fa fa-minus fa-2x"></i>
-                                        <p>{this.widgets.left.description}</p><br />
-                                    </div>
-                                </div>
-                            </div>
-                            <div 
-                                className="col-sm-4" 
-                                onMouseOver={() => this.setState({isMouseoverMidWidget: true})}
-                                onMouseOut={() => this.setState({isMouseoverMidWidget: false})}
-                                onTouchStart={() => this.setState({isMouseoverLeftWidget: false, isMouseoverMidWidget: true, isMouseoverRightWidget: false})}
-                            >
-                                <div className={css(this.state.isMidWidgetAnimated ? aboutMeStyles.fadeInUp : aboutMeStyles.hidden)}>
-                                    <div 
-                                        className={css(aboutMeStyles.widget)}
-                                        style={{transform: this.state.isMouseoverMidWidget ? 'scale(1.05)' : 'scale(1)', transitionDuration: '0.2s'}}
-                                    >
-                                        <i className={"fa " + this.widgets.mid.icon + " fa-5x icon"}></i>
-                                        <p>{this.widgets.mid.title}</p>
-                                        <i className="fa fa-minus fa-2x"></i>
-                                        <p>{this.widgets.mid.description}</p><br />
-                                    </div>
-                                </div>
-                            </div>
-                            <div 
-                                className="col-sm-4" 
-                                onMouseOver={() => this.setState({isMouseoverRightWidget: true})}
-                                onMouseOut={() => this.setState({isMouseoverRightWidget: false})}
-                                onTouchStart={() => this.setState({isMouseoverLeftWidget: false, isMouseoverMidWidget: false, isMouseoverRightWidget: true})}
-                            >
-                                <div className={css(this.state.isRightWidgetAnimated ? aboutMeStyles.fadeInUp : aboutMeStyles.hidden)}>
-                                    <div 
-                                        className={css(aboutMeStyles.widget)}
-                                        style={{transform: this.state.isMouseoverRightWidget ? 'scale(1.05)' : 'scale(1)', transitionDuration: '0.2s'}}
-                                    >
-                                        <i className={"fa " + this.widgets.right.icon + " fa-5x icon"}></i>
-                                        <p>{this.widgets.right.title}</p>
-                                        <i className="fa fa-minus fa-2x"></i>
-                                        <p>{this.widgets.right.description}</p><br />
-                                    </div>
+                    <VisibilitySensor onChange={(isVisible) => {if (isVisible && !isMobile()) this.animateWidgets(this.animationDelay)}} />
+                    <div className="row">
+                        <div 
+                            className="col-sm-4" 
+                            onMouseOver={() => this.setState({isMouseoverLeftWidget: true})}
+                            onMouseOut={() => this.setState({isMouseoverLeftWidget: false})}
+                            onTouchStart={() => this.setState({isMouseoverLeftWidget: true, isMouseoverMidWidget: false, isMouseoverRightWidget: false})}
+                        >
+                            <VisibilitySensor onChange={(isVisible) => {if (isVisible && isMobile()) this.setState({isLeftWidgetAnimated: true})}} />
+                            <div className={css(this.state.isLeftWidgetAnimated ? aboutMeStyles.fadeInUp : aboutMeStyles.hidden)}>
+                                <div 
+                                    className={css(aboutMeStyles.widget)}
+                                    style={{transform: this.state.isMouseoverLeftWidget ? 'scale(1.05)' : 'scale(1)', transitionDuration: '0.2s'}}
+                                >
+                                    <i className={"fa " + this.widgets.left.icon + " fa-5x icon"}></i>
+                                    <p style={{color: this.props.textColor}}>{this.widgets.left.title}</p>
+                                    <i className="fa fa-minus fa-2x"></i>
+                                    <p style={{color: this.props.textColor}}>{this.widgets.left.description}</p>
+                                    <br />
                                 </div>
                             </div>
                         </div>
-                    </Element>
+                        <div 
+                            className="col-sm-4" 
+                            onMouseOver={() => this.setState({isMouseoverMidWidget: true})}
+                            onMouseOut={() => this.setState({isMouseoverMidWidget: false})}
+                            onTouchStart={() => this.setState({isMouseoverLeftWidget: false, isMouseoverMidWidget: true, isMouseoverRightWidget: false})}
+                        >
+                            <VisibilitySensor onChange={(isVisible) => {if (isVisible && isMobile()) this.setState({isMidWidgetAnimated: true})}} />
+                            <div className={css(this.state.isMidWidgetAnimated ? aboutMeStyles.fadeInUp : aboutMeStyles.hidden)}>
+                                <div 
+                                    className={css(aboutMeStyles.widget)}
+                                    style={{transform: this.state.isMouseoverMidWidget ? 'scale(1.05)' : 'scale(1)', transitionDuration: '0.2s'}}
+                                >
+                                    <i className={"fa " + this.widgets.mid.icon + " fa-5x icon"}></i>
+                                    <p style={{color: this.props.textColor}}>{this.widgets.mid.title}</p>
+                                    <i className="fa fa-minus fa-2x"></i>
+                                    <p style={{color: this.props.textColor}}>{this.widgets.mid.description}</p>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                        <div 
+                            className="col-sm-4" 
+                            onMouseOver={() => this.setState({isMouseoverRightWidget: true})}
+                            onMouseOut={() => this.setState({isMouseoverRightWidget: false})}
+                            onTouchStart={() => this.setState({isMouseoverLeftWidget: false, isMouseoverMidWidget: false, isMouseoverRightWidget: true})}
+                        >
+                            <VisibilitySensor onChange={(isVisible) => {if (isVisible && isMobile()) this.setState({isRightWidgetAnimated: true})}} />
+                            <div className={css(this.state.isRightWidgetAnimated ? aboutMeStyles.fadeInUp : aboutMeStyles.hidden)}>
+                                <div 
+                                    className={css(aboutMeStyles.widget)}
+                                    style={{transform: this.state.isMouseoverRightWidget ? 'scale(1.05)' : 'scale(1)', transitionDuration: '0.2s'}}
+                                >
+                                    <i className={"fa " + this.widgets.right.icon + " fa-5x icon"}></i>
+                                    <p style={{color: this.props.textColor}}>{this.widgets.right.title}</p>
+                                    <i className="fa fa-minus fa-2x"></i>
+                                    <p style={{color: this.props.textColor}}>{this.widgets.right.description}</p>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );

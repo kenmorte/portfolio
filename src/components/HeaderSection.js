@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Typist from 'react-typist';
 import { Parallax } from 'react-parallax';
 import SanJose from '../img/San-Jose.jpg';
+import Code from '../img/Code.png';
 import '../css/style.css';
 
 class Header extends Component {
@@ -29,7 +30,13 @@ class Header extends Component {
 
                 return {
                     subtitleIndex: index,
-                    typist: <Typist className="header-subtitle" key={index} onTypingDone={this.handleTypingDone}>{this.props.subtitles[index]}</Typist>
+                    typist: <Typist 
+                                className="header-subtitle" 
+                                key={index} 
+                                onTypingDone={this.handleTypingDone}
+                            >{
+                                this.props.subtitles[index]}
+                            </Typist>
                 }
             });
 
@@ -39,7 +46,7 @@ class Header extends Component {
 
     render() {
         return (
-            <Parallax bgImage={SanJose} strength={400}>
+            <Parallax bgImage={Code} bgWidth='auto' bgHeight='auto' strength={400}>
                 <div className="header-content-area">
                     <div className="header-main-title">{this.props.mainTitle}</div>
                     {this.state.typist}

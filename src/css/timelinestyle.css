@@ -26,7 +26,7 @@ body a:hover{
 .header-right h2 {
     font-size: 1.2em;
     color: #000;
-    background: #F3E000;
+    background: white;
     display: inline-block;
     padding: .5em 1.5em;
     position: relative;
@@ -40,7 +40,7 @@ body a:hover{
     left: 12px;
     border-style: solid;
     border-width: 10px 10px 0 10px;
-    border-color: #F3E000 transparent transparent transparent;
+    border-color: white transparent transparent transparent;
 }
 .header-right h6 {
     font-size: 1em;
@@ -146,10 +146,15 @@ p {
 /*--//about--*/
 /*--work--*/
 .work {
-    background: #F5F1DE;
+    background: #DDDDDD;
 }
 .work-info {
-    margin: 1em 0;
+    margin: 1em 0 0 0;
+}
+@media only screen and (max-device-width: 480px) {
+    .work-info {
+        margin: 1em 0;
+    }
 }
 .work-left {
     text-align: right;
@@ -244,8 +249,15 @@ p {
         margin: 2em 0;
     }
 }
+@media only screen and (max-device-width: 360px) {
+    .work-right2 {
+        position: relative;
+        margin-right: 5em;
+    }
+}
+
 .work-info:hover h5 span.glyphicon {
-    color: #F7E612;
+    color: white;
 	-webkit-transform: scale(1.2);
 	-moz-transform: scale(1.2);
     transform: scale(1.2);
@@ -287,7 +299,7 @@ p {
 /*--SAP--*/
 ul.resp-tabs-list {  
 /*-- w3layouts --*/
-background: #F7E612;
+background: white;
 }
 .sap_tabs{
 	clear:both;
@@ -515,7 +527,7 @@ h2.resp-accordion {
     color: #fff;
 }
 .contact p a:hover{
-    color: #F7E612;
+    color: white;
 }
 .address-left:after {
     content: '';
@@ -601,7 +613,7 @@ h2.resp-accordion {
 	font-size: 1.1em;
 }
 .footer p a{
-    color: #F7E612;
+    color: white;
 }
 .footer p a:hover{
     color: #fff;
