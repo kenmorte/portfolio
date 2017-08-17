@@ -30,6 +30,10 @@ const styles = StyleSheet.create({
     border: 'none',
   },
 
+  navButtonCompact: {
+    width: '100%',
+  },
+
   navHeader: {
     color: 'white', 
     background: 'black', 
@@ -135,6 +139,7 @@ class App extends Component {
 
   componentWillMount = () => {
     document.addEventListener('click', this.handleClick, false);
+    document.addEventListener('touchstart', this.handleClick, false);
     this.updateDimensions();
   }
 
@@ -152,7 +157,7 @@ class App extends Component {
     if (!this.refs.alternativeMenu) {
       return;
     }
-    if (!this.refs.alternativeMenu.contains(event.target)) {
+    if (!this.refs.alternativeMenu.contains(event.target) && !this.refs.menuIcon.contains(event.target)) {
       this.setState({showAlternativeMenu: false});
     }
   }
@@ -185,6 +190,7 @@ class App extends Component {
       <SkillsSection
         mainColor={this.mainColor}
         textColor={this.subColor}
+        showAlternativeMenu={this.state.showAlternativeMenu}
       />
     );
   }
@@ -246,6 +252,8 @@ class App extends Component {
                           )}                       
                           onMouseOver={() => this.setState({mouseoverNavbarButton: this.navbarButtons.WORK_EXPERIENCE})}
                           onMouseOut={() => this.setState({mouseoverNavbarButton: null})}
+                          onTouchStart={() => this.setState({mouseoverNavbarButton: this.navbarButtons.WORK_EXPERIENCE})}
+                          onTouchEnd={() => this.setState({mouseoverNavbarButton: null})}
                           onClick={(e) => {
                             e.target.blur();
                             scroller.scrollTo("work-experience", this.defaultAnimationSettings);
@@ -296,14 +304,108 @@ class App extends Component {
                   </ul>
                 :
                   <i 
+                    ref="menuIcon"
                     className="fa fa-bars" 
-                    ariaHdden="true" 
                     style={{color: 'white', fontSize: 25, position: 'absolute', top: '25%', right: '1em', cursor: 'pointer'}}
-                    onClick={() => this.setState((prevState) => { return {showAlternativeMenu: !prevState.showAlternativeMenu}})}></i>
+                    onClick={() => {console.log(this.state.showAlternativeMenu); this.setState({showAlternativeMenu: !this.state.showAlternativeMenu})}}></i>
               }
               {
                 this.state.showAlternativeMenu ?
-                  <div ref="alternativeMenu" style={{position: 'absolute', top: '100%', width: '100%', left: 0, height: 100, background: 'blue'}}>
+                  <div ref="alternativeMenu" style={{position: 'absolute', top: '100%', width: '100%', left: 0, background: 'black'}}>
+                    <ul style={{fontSize: 14}}>
+                      <li>
+                          <button 
+                            className={css(
+                              styles.navButton, 
+                              styles.navButtonCompact,
+                              this.state.mouseoverNavbarButton === this.navbarButtons.ABOUT_ME ? styles.highlightedNavButtonStyle : null,
+                              this.state.activeNavbarButton === this.navbarButtons.ABOUT_ME ? styles.activeNavbarButton : null,
+                            )} 
+                            onMouseOver={() => this.setState({mouseoverNavbarButton: this.navbarButtons.ABOUT_ME})}
+                            onMouseOut={() => this.setState({mouseoverNavbarButton: null})}
+                            onClick={(e) => {
+                            this.setState({showAlternativeMenu: false, mouseoverNavbarButton: null});
+                              e.target.blur();
+                              scroller.scrollTo("about-me", this.defaultAnimationSettings);
+                            }}
+                          >
+                            About Me
+                          </button>
+                      </li>
+                      <li>
+                          <button 
+                            className={css(
+                              styles.navButton, 
+                              styles.navButtonCompact,
+                              this.state.mouseoverNavbarButton === this.navbarButtons.WORK_EXPERIENCE ? styles.highlightedNavButtonStyle : null,
+                              this.state.activeNavbarButton === this.navbarButtons.WORK_EXPERIENCE ? styles.activeNavbarButton : null,
+                            )}                       
+                            onMouseOver={() => this.setState({mouseoverNavbarButton: this.navbarButtons.WORK_EXPERIENCE})}
+                            onMouseOut={() => this.setState({mouseoverNavbarButton: null})}
+                            onClick={(e) => {
+                            this.setState({showAlternativeMenu: false, mouseoverNavbarButton: null});
+                              e.target.blur();
+                              scroller.scrollTo("work-experience", this.defaultAnimationSettings);
+                            }}
+                          >
+                            Work Experience
+                          </button>
+                      </li>
+                      <li>
+                        <button 
+                          className={css(
+                            styles.navButtonCompact,
+                            styles.navButton, 
+                            this.state.mouseoverNavbarButton === this.navbarButtons.SKILLS ? styles.highlightedNavButtonStyle : null
+                          )} 
+                          onMouseOver={() => this.setState({mouseoverNavbarButton: this.navbarButtons.SKILLS})}
+                          onMouseOut={() => this.setState({mouseoverNavbarButton: null})}
+                          onClick={(e) => {
+                            this.setState({showAlternativeMenu: false, mouseoverNavbarButton: null});
+                            e.target.blur();
+                            scroller.scrollTo("skills", this.defaultAnimationSettings);
+                          }}
+                        >
+                          Skills
+                        </button>
+                      </li>
+                      <li>
+                        <button 
+                          className={css(
+                            styles.navButton, 
+                            styles.navButtonCompact,
+                            this.state.mouseoverNavbarButton === this.navbarButtons.PROJECTS ? styles.highlightedNavButtonStyle : null
+                          )} 
+                          onMouseOver={() => this.setState({mouseoverNavbarButton: this.navbarButtons.PROJECTS})}
+                          onMouseOut={() => this.setState({mouseoverNavbarButton: null})}
+                          onClick={(e) => {
+                            this.setState({showAlternativeMenu: false, mouseoverNavbarButton: null});
+                            e.target.blur();
+                            scroller.scrollTo("projects", this.defaultAnimationSettings);
+                          }}
+                        >
+                          Projects
+                        </button>
+                      </li>
+                      <li>
+                        <button 
+                          className={css(
+                            styles.navButton, 
+                            styles.navButtonCompact,
+                            this.state.mouseoverNavbarButton === this.navbarButtons.CONTACT ? styles.highlightedNavButtonStyle : null
+                          )} 
+                          onMouseOver={() => this.setState({mouseoverNavbarButton: this.navbarButtons.CONTACT})}
+                          onMouseOut={() => this.setState({mouseoverNavbarButton: null})}
+                          onClick={(e) => {
+                            this.setState({showAlternativeMenu: false, mouseoverNavbarButton: null});
+                            e.target.blur();
+                            scroller.scrollTo("contact", this.defaultAnimationSettings);
+                          }}
+                        >
+                          Contact
+                        </button>
+                      </li>
+                    </ul>
                   </div>
                 : null
               }
