@@ -4,3 +4,6 @@
 - General code cleanup (get rid of unused blocks, remove unused libraries, etc.)
 - Find better third color instead of black to contrast the dark blue/light gray theme
 - Add page header for browsers, description, and possibly icon
+- Implement compact navigation bar for shorter-width windows
+- Implement active navigation bar items for when currently scrolled into a section
+- Add a "down" arrow in the header section to scroll down to "About Me" section
