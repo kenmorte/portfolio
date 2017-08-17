@@ -27,7 +27,7 @@ import 'babel-polyfill';
 const styles = StyleSheet.create({
 
     skillContainer: {
-        background: '#4C5364',
+        background: 'rgb(24, 46, 70)',
         color: 'white',
         textAlign: 'center',
         fontSize: '20px',

@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   sectionHeaderTitle: {
     fontSize: '48px',
     margin: '20px',
-    paddingTop: '20px',
+    paddingTop: '80px',
   },
 
   sectionHeaderSubtitle: {
@@ -35,7 +35,7 @@ class Section extends Component {
 
   render() {
     return (
-        <div style={this.style}>
+        <div id={this.props.id} style={this.style}>
             <div className={css(styles.sectionHeader)}>
               <div className={css(styles.sectionHeaderTitle)} style={{color: this.props.titleColor}}>{this.props.title}</div>
               <div className={css(styles.sectionHeaderSubtitle)} style={{color: this.props.subtitleColor}}>{this.props.subtitle}</div>

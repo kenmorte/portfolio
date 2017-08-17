@@ -134,10 +134,15 @@ a.icon:hover + .ch-info {
 	background: rgba(0,0,0,0);
 	border: 1px solid white;
 }
+.btn-resume:active {
+	color: white;
+	background: rgba(0,0,0,0);
+	border: 1px solid white;
+}
 .btn-resume:hover {
 	background: white;
 	border: 1px solid white;
-	color: #4C5364;
+	color: rgb(24, 46, 70);
 }
 .btn{
     white-space:normal !important;

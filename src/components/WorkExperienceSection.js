@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import VisibilitySensor from 'react-visibility-sensor';
 import { fadeInLeft, fadeInRight } from 'react-animations';
+import VisibilitySensor from 'react-visibility-sensor';
+import Scroll from 'react-scroll';
 import { StyleSheet, css } from 'aphrodite';
 
+/**************************************************************/
+/* ------------------- React Scroll Members ----------------- */
+/**************************************************************/
+var Link       = Scroll.Link;
+var Element    = Scroll.Element;
+var Events     = Scroll.Events;
+var scroll     = Scroll.animateScroll;
+var scrollSpy  = Scroll.scrollSpy;
 
-/**************************************************************/
-/* --------------- Work Experience Inline-Styles ------------ */
-/**************************************************************/
 const styles = StyleSheet.create({
     hidden: {
         visibility: 'hidden'
@@ -26,6 +32,8 @@ const styles = StyleSheet.create({
 class WorkExperienceSection extends Component {
     constructor(props) {
         super(props);
+
+        this.firstVisibility = true;
 
         this.workExperienceInfo = [
             {
@@ -70,16 +78,15 @@ class WorkExperienceSection extends Component {
         ];
 
         this.state = {
-            scrolledWorkIndices: new Set(),
+            scrolledWorkIndex: -1,
             onMouseoverWorkIndex: -1,
         };
     }
 
     handleScrollActive = (currentWorkIndex) => {
         this.setState((prevState) => {
-            prevState.scrolledWorkIndices.add(currentWorkIndex);
             return {
-                scrolledWorkIndices: prevState.scrolledWorkIndices
+                scrolledWorkIndex: Math.max(prevState.scrolledWorkIndex, currentWorkIndex)
             };
         });
     }
@@ -88,50 +95,43 @@ class WorkExperienceSection extends Component {
         return this.workExperienceInfo.map((info, index) => {
             return (
                 <div key={"work " + index}>
-                    <VisibilitySensor 
-                        onChange={(isVisible) => {
-                                if (isVisible) {
-                                    this.handleScrollActive(index);
-                                }
-                            } 
-                        }
-                    />
-                    <div className="work-info" onMouseOver={() => this.setState({onMouseoverWorkIndex: index})}>
-                        <div 
-                            className={css(
-                                this.state.scrolledWorkIndices.has(index) ? 
-                                    (
-                                        index % 2 == 0 ? styles.fadeInRight : styles.fadeInLeft
-                                    )
-                                : styles.hidden
-                            )} 
-                        >
-                            <div className={"col-md-6 " + (index % 2 == 0 ? "work-right work-right2" : "work-left")}>
-                                <h4>{info.startDate} - {info.endDate}</h4>
+                    <VisibilitySensor onChange={(isVisible) => {if (this.firstVisibility) { this.firstVisibility = false; return; } if (isVisible) this.handleScrollActive(index)}} />
+                        <div className="work-info" onMouseOver={() => this.setState({onMouseoverWorkIndex: index})}>
+                            <div 
+                                className={css(
+                                    this.state.scrolledWorkIndex >= index ? 
+                                        (
+                                            index % 2 == 0 ? styles.fadeInRight : styles.fadeInLeft
+                                        )
+                                    : styles.hidden
+                                )} 
+                            >
+                                <div className={"col-md-6 " + (index % 2 == 0 ? "work-right work-right2" : "work-left")}>
+                                    <h4>{info.startDate} - {info.endDate}</h4>
+                                </div>
                             </div>
-                        </div>
-                        <div 
-                            className={css(
-                                this.state.scrolledWorkIndices.has(index) ? 
-                                    (
-                                        index % 2 == 0 ? styles.fadeInLeft : styles.fadeInRight
-                                    )
-                                : styles.hidden
-                            )} 
-                        >
-                            <div className={"col-md-6 " + (index % 2 == 0 ? "work-left work-left2" : "work-right")}>
-                                <a href={info.url}>
-                                    <h5 style={{textDecoration: this.state.onMouseoverWorkIndex === index ? 'underline' : null}}>
-                                        {index % 2 == 0 ? info.company : null}
-                                        <span className="glyphicon glyphicon-briefcase" />
-                                        {index % 2 == 1 ? info.company : null}
-                                    </h5>
-                                </a>
-                                <p style={index % 2 == 0 ? { marginBottom: -12, color: '#727878' } : {color: '#727878'}}>{info.description}</p>
+                            <div 
+                                className={css(
+                                    this.state.scrolledWorkIndex >= index ? 
+                                        (
+                                            index % 2 == 0 ? styles.fadeInLeft : styles.fadeInRight
+                                        )
+                                    : styles.hidden
+                                )} 
+                            >
+                                <div className={"col-md-6 " + (index % 2 == 0 ? "work-left work-left2" : "work-right")}>
+                                    <a href={info.url}>
+                                        <h5 style={{textDecoration: this.state.onMouseoverWorkIndex === index ? 'underline' : null}}>
+                                            {index % 2 == 0 ? info.company : null}
+                                            <span className="glyphicon glyphicon-briefcase" style={{zIndex: 0}} />
+                                            {index % 2 == 1 ? info.company : null}
+                                        </h5>
+                                    </a>
+                                    <p style={index % 2 == 0 ? { marginBottom: -12, color: '#727878' } : {color: '#727878'}}>{info.description}</p>
+                                </div>
                             </div>
+                            <div className="clearfix"> </div>
                         </div>
-                        <div className="clearfix"> </div>
-                    </div>
                 </div>
             );
         });

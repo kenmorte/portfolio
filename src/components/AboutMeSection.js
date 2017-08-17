@@ -5,6 +5,7 @@ import { StyleSheet, css } from 'aphrodite';
 import { isMobile } from '../helpers/helpers.js';
 import profilePic from '../img/me.jpg';
 
+
 /**************************************************************/
 /* ------------------ About Me Inline-Styles ---------------- */
 /**************************************************************/
@@ -40,12 +41,17 @@ const styles = StyleSheet.create({
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
     },
+
+
 });
 
 
 class AboutMeSection extends Component {
     constructor(props) {
         super(props);
+
+        this.firstVisbility = true;
+        this.secondVisibility = true;
 
         // Section description
         this.description = 
@@ -120,6 +126,11 @@ class AboutMeSection extends Component {
     }
 
     animateWidgets = (animationDelay) => {
+        if (this.firstVisbility) {
+            this.firstVisbility = false;
+            return;
+        }
+
         this.setState({scrolledOnAboutMeWidgets: true, isLeftWidgetAnimated: true},
             () => {
                 const midWidgetAnimationTimeout = setTimeout(() => {
@@ -150,15 +161,29 @@ class AboutMeSection extends Component {
                     {this.description}
                 </div>
                 <div className="container">
+                    <VisibilitySensor onChange={(isVisible) => {if (isVisible && !isMobile()) this.animateWidgets(this.animationDelay)}} />
                     <div className="row">
-                    <VisibilitySensor minTopValue={1000} onChange={(isVisible) => {if (isVisible && !isMobile()) this.animateWidgets(this.animationDelay)}} />
                         <div 
                             className="col-sm-4" 
                             onMouseOver={() => this.setState({isMouseoverLeftWidget: true})}
                             onMouseOut={() => this.setState({isMouseoverLeftWidget: false})}
                             onTouchStart={() => this.setState({isMouseoverLeftWidget: true, isMouseoverMidWidget: false, isMouseoverRightWidget: false})}
                         >
-                            <VisibilitySensor onChange={(isVisible) => {if (isVisible && isMobile()) this.setState({isLeftWidgetAnimated: true})}} />
+                            {
+                                isMobile() ?
+                                    <VisibilitySensor onChange={(isVisible) => {
+                                            if (isVisible) {
+                                                if (this.firstVisbility) {
+                                                    this.firstVisbility = false;
+                                                    return;
+                                                }
+                                                this.setState({isLeftWidgetAnimated: true});
+                                            }
+                                        }
+                                    }
+                                    />
+                                : null
+                            }
                             <div className={css(this.state.isLeftWidgetAnimated ? styles.fadeInUp : styles.hidden)}>
                                 <div 
                                     className={css(styles.widget)}
@@ -178,7 +203,21 @@ class AboutMeSection extends Component {
                             onMouseOut={() => this.setState({isMouseoverMidWidget: false})}
                             onTouchStart={() => this.setState({isMouseoverLeftWidget: false, isMouseoverMidWidget: true, isMouseoverRightWidget: false})}
                         >
-                            <VisibilitySensor onChange={(isVisible) => {if (isVisible && isMobile()) this.setState({isMidWidgetAnimated: true})}} />
+                            {
+                                isMobile() ?
+                                    <VisibilitySensor onChange={(isVisible) => {
+                                            if (isVisible) {
+                                                if (this.secondVisibility) {
+                                                    this.secondVisibility = false;
+                                                    return;
+                                                }
+                                                this.setState({isMidWidgetAnimated: true});
+                                            }
+                                        }
+                                    }
+                                    />
+                                : null
+                            }
                             <div className={css(this.state.isMidWidgetAnimated ? styles.fadeInUp : styles.hidden)}>
                                 <div 
                                     className={css(styles.widget)}

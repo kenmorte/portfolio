@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Typist from 'react-typist';
 import { Parallax } from 'react-parallax';
 import { StyleSheet, css } from 'aphrodite';
-import Code from '../img/Code.png';
+import Code from '../img/Code.jpg';
+import Night from '../img/night.jpg';
 
 /**************************************************************/
 /* ------------------- Header Inline-Styles ----------------- */
@@ -21,6 +22,7 @@ const styles = StyleSheet.create({
         top: '25vh',
         fontSize: '72px',
         fontWeight: '300',
+        fontFamily: 'monospace',
         paddingBottom: '20px',
         borderBottom: '1px solid rgba(255, 255, 255, 0.74902)',
         display: 'inline-block',
@@ -84,7 +86,7 @@ class Header extends Component {
 
     render() {
         return (
-            <Parallax bgImage={Code} bgWidth='auto' bgHeight='auto' strength={400}>
+            <Parallax bgImage={Night} bgWidth='auto' bgHeight='auto'>
                 <div className={css(styles.headerContentArea)}>
                     <div className={css(styles.headerMainTitle)}>{this.props.mainTitle}</div>
                     {this.state.typist}
