@@ -1,6 +1,7 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
+  "homepage" : "http://kenmorte.github.io",
   "private": true,
   "dependencies": {
     "aphrodite": "^1.2.1",

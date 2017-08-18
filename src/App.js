@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
 });
 
 const NORMAL_PROJECT_IMG_STYLE = {
-  transform: 'scale(1)',
+  transform: 'scale(1)', 
   left: 0
 };
 const HIGHLIGHTED_PROJECT_IMG_STYLE = {
