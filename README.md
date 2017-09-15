@@ -9,3 +9,4 @@
 - Add a "down" arrow in the header section to scroll down to "About Me" section
 - Add touch events for navbar buttons to properly highlight when on "touchstart" and unhighlight on "touchend"
 - Add Google Analytics
+- Update Cadence description
