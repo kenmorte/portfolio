@@ -11,3 +11,4 @@
 - Add Google Analytics
 - Fix "Other Technologies" skill bars when window is smaller width
 - Update Cadence description
+- Fix layout for wider resolutions (test using Google Chrome zooming out)
