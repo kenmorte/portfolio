@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Typist from 'react-typist';
 import { Parallax } from 'react-parallax';
 import { StyleSheet, css } from 'aphrodite';
+import { isMobile } from '../helpers/helpers.js';
 import Code from '../img/Code.jpg';
 import Night from '../img/night.jpg';
 
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     headerMainTitle: {
         position: 'relative',
         top: '25vh',
-        fontSize: '72px',
+        fontSize: isMobile() ? '68px' : '72px',
         fontWeight: '300',
         fontFamily: 'monospace',
         paddingBottom: '20px',

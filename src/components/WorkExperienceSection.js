@@ -40,20 +40,21 @@ class WorkExperienceSection extends Component {
                 company: "Cadence Design Systems",
                 url: "https://www.cadence.com/",
                 startDate: 'June 2017',
-                endDate: 'Present',
+                endDate: 'September 2017',
                 description: 
-                    "I'm currently a Software Engineering Intern for Cadence Design Systems this summer. " +
-                    "I am utilizing React, Material-UI, and Javascript to implement various features into a web-app module. " +
-                    "I am also working on a file system script to ease the workflow for our team."
+                    "This past summer I worked as a Software Engineering Intern for Cadence Design Systems. " +
+                    "I utilized React, Material-UI, and Javascript to build the entire GUI for the Sigrity team's PCB T-Line analysis tool, which is released to companies such as Intel. " +
+                    "I also improved and added new features into a curve analysis module GUI using React."
             },
             {
                 company: "Calit2 @ UCI",
                 url: "http://www.calit2.uci.edu/",
                 startDate: 'January 2017',
-                endDate: 'Present',
+                endDate: 'June 2017',
                 description: 
-                    "I work as a software developer with Calit2 to build a product called \"PET: A Personal Embodied Trainer\". " +
-                    "As one of the team leads, I assign and help out on various tasks to my teammates as well as design and code our application. " 
+                    "I worked as a software developer with Calit2 to build a product called \"PET: A Personal Embodied Trainer\". " +
+                    "As one of the team leads, I assign and help out on various tasks to my teammates as well as design and code our application. " +
+                    "Check out the project in the skills section below!"
             },
             {
                 company: "Sandia National Laboratories",

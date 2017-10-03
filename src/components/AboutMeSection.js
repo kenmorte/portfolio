@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     },
 
     section: {
-        margin: isMobile() ? '2em 5em' : '2em 7em',
+        margin: '2em 8%',
         textAlign: 'center',
         lineHeight: '35px',
         fontSize: '18px',

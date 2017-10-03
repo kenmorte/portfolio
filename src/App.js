@@ -80,7 +80,7 @@ var scroll     = Scroll.animateScroll;
 var scrollSpy  = Scroll.scrollSpy;
 var scroller   = Scroll.scroller;
 
-
+// Register touch events in main window
 document.addEventListener("touchstart", function(){}, true);
 
 class App extends Component {

@@ -36,6 +36,10 @@ const styles = StyleSheet.create({
         height: 'auto',
     },
 
+    skills: {
+        padding: '1em 0',
+    },
+
     hidden: {
         visibility: 'hidden'
     },
@@ -212,11 +216,27 @@ class SkillsSection extends Component {
         this.state = {
             mouseoverProgrammingLangIndex: null,
 
+            width: window.innerWidth,
+
             // To keep track of the visibly scrolled skill bars
             scrolledProgrammingLangs: new Set(),
             scrolledFrameworkLibs: new Set(),
             scrolledOtherTechs: new Set(),
         };
+    }
+
+    componentDidMount() {
+        window.addEventListener("resize", this.handleUpdateWidth);
+    }
+
+    componentWillUnmount = () => {
+        window.removeEventListener("resize", this.handleUpdateWidth);
+    }
+
+    handleUpdateWidth = () => {
+        if (!isMobile()) {
+            this.setState({width: this.container.getBoundingClientRect().width});
+        }
     }
 
     getProgrammingLanguages = () => {
@@ -337,54 +357,60 @@ class SkillsSection extends Component {
 
     render() {
         return (
-      <div className={css(styles.skillContainer)}>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-                <h2>Programming Languages</h2>
-                <div className={css(styles.bars)}>
-                    <ul className="skills" style={{ background: this.props.mainColor, color: this.props.subColor }}>
-                        {this.getProgrammingLanguages()}
-                    </ul>
-                </div>
-                <br />
-            </div>
-
-            <div className="col-md-6">
-                <h2>Frameworks and Libraries</h2>
-                <div className={css(styles.bars)}>
-                    <ul className="skills" style={{ background: this.props.mainColor }}>
-                        {this.getFrameworksLibraries()}
-                    </ul>
-                </div>
-                <br />
-            </div>
-            
-            <h2>Other Technologies</h2>
-            <div className="col-md-6">
-                <div className={css(styles.bars)}>
-                    <ul className="skills" style={{ background: this.props.mainColor }}>
-                        {this.getOtherTechnologies(true)}
-                        {isMobile() ? this.getOtherTechnologies(false) : null}
-                    </ul>
-                </div>
-            </div>
-            {
-                !isMobile() ? 
-                    <div className="col-md-6">
-                        <div className={css(styles.bars)}>
-                            <ul className="skills" style={{ background: this.props.mainColor }}>
-                                {this.getOtherTechnologies(false)}
-                            </ul>
+            <div className={css(styles.skillContainer)} ref={container => this.container = container}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-6">
+                            <h2>Programming Languages</h2>
+                            <div className={css(styles.bars)}>
+                                <ul className={css(styles.skills)} style={{ background: this.props.mainColor, color: this.props.subColor }}>
+                                    {this.getProgrammingLanguages()}
+                                </ul>
+                            </div>
+                            <br />
                         </div>
+
+                        <div className="col-md-6">
+                            <h2>Frameworks and Libraries</h2>
+                            <div className={css(styles.bars)}>
+                                <ul className={css(styles.skills)} style={{ background: this.props.mainColor }}>
+                                    {this.getFrameworksLibraries()}
+                                </ul>
+                            </div>
+                            <br />
+                        </div>
+                        
+                        <h2>Other Technologies</h2>
+                        <div className="col-md-6">
+                            <div className={css(styles.bars)}>
+                                <ul className={css(styles.skills)} style={{ background: this.props.mainColor }}>
+                                    {this.getOtherTechnologies(true)}
+                                    {
+                                    /* When the width of the container is <= 991, then there's a bug where a large 
+                                       vertical space between the two bars in other technologies. The below solution fixes
+                                       this by removing that vertical space.
+                                    */
+                                    }
+                                    {isMobile() || this.state.width <= 991 ? this.getOtherTechnologies(false) : null}
+                                </ul>
+                            </div>
+                        </div>
+                        {
+                            !(isMobile() || this.state.width <= 991) ? 
+                                <div className="col-md-6">
+                                    <div className={css(styles.bars)}>
+                                        <ul className={css(styles.skills)} style={{ background: this.props.mainColor }}>
+                                            {this.getOtherTechnologies(false)}
+                                        </ul>
+                                    </div>
+                                </div>
+                            : null
+                        }
+                        <br />
+                        <br />
                     </div>
-                : null
-            }
-            <br />
-            <br />
-          </div>
-        </div>
-      </div>
+                </div>
+            </div>
         );
     }
 }

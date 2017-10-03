@@ -77,7 +77,7 @@ class ContactSection extends Component {
                 <div>
                     {this.getContactList()}
                 </div>
-                <div id="contact-text" style={{margin: '2em 5em', textAlign: 'center'}}>
+                <div id="contact-text" style={{margin: '2em 7%', textAlign: 'center'}}>
                 <p style={{fontSize: 18, color: this.subColor}}>
                     I am very interested to work with all sorts of projects. Reach out to me on one of the various networks, or through my email. Otherwise, here's my resume.
                 </p>
