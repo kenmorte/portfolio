@@ -87,7 +87,7 @@ class Header extends Component {
 
     render() {
         return (
-            <Parallax bgImage={Night} bgWidth='auto' bgHeight='auto'>
+            <Parallax bgImage={Night} bgWidth='100%' bgHeight='100%'>
                 <div className={css(styles.headerContentArea)}>
                     <div className={css(styles.headerMainTitle)}>{this.props.mainTitle}</div>
                     {this.state.typist}

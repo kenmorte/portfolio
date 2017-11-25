@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
 
     skills: {
         padding: '1em 0',
+        overflow: 'hidden',
     },
 
     hidden: {
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
         background: '#bdc3c7',
         height: '38px',
         borderRadius: '3px',
-        overflow: 'hidden',
+        // overflow: 'hidden',
     },
 
     barEl: {
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
         background: '#bdc3c7',
         height: '38px',
         borderRadius: '3px',
-        overflow: 'hidden',
+        // overflow: 'hidden',
     },
 
     barFill: {
@@ -243,7 +244,7 @@ class SkillsSection extends Component {
         return this.skills.programmingLanguages.sort((a, b) => b.percent - a.percent)
             .map((programmingLanguage, index) => {
                 return (
-                    <li className={css(styles.barEl, styles.barsLi)} key={"programmingLanguage" + index}>
+                    <li style={{display: 'block'}} className={css(styles.barEl, styles.barsLi)} key={"programmingLanguage" + index}>
                             <VisibilitySensor onChange={
                                 (isVisible) => {
                                     if (isVisible)
